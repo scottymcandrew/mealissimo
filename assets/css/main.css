@@ -1,0 +1,36 @@
+/* Font styles */
+
+.font-libre-baskerville {
+    font-family: 'Libre Baskerville', serif;
+}
+
+.font-source-sans-pro {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Color Pallete */
+
+.bg-color-off-white {
+    background-color: #F6F4F2;
+}
+
+.bg-color-grey-blue {
+    background-color: #425664;
+}
+
+.color-grey-blue {
+    color: #425664;
+}
+
+.color-burnt-gold {
+    color: #C6AD8F;
+}
+
+/* Margins, Padding etc */
+
+
+/* Main Styles */
+
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+}
