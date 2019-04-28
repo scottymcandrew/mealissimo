@@ -34,3 +34,14 @@
 html {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+header {
+    font-family: 'Libre Baskerville', serif;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+form {
+    font-size: 1em;
+}
