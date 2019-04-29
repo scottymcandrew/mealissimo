@@ -58,27 +58,45 @@ function getTableEntries(obj) { // This function is a combination of the two get
     return tableEntries;
 }
 
+function getRecipeIngredients(obj) {
+    var recipeIngredients = [];
+
+    Object.values(obj).forEach(function(item) {
+        recipeIngredients.push(`<li>${item}</li>`);
+    });
+
+    return recipeIngredients;
+    
+}
+
 function writeToDocument(params) {
     // Clear div elements to prevent concatenation on subsequent form fills
     // var elData = document.getElementById("data");
     // var elRecipeHeader = document.getElementById("recipe-header");
     var elRecipeLabel = document.getElementById("recipe-label");
     var elRecipeImage = document.getElementById("recipe-image");
+    var elRecipeIngredients = document.getElementById("recipe-ingredients");
     // elData.innerHTML = "";
     // elRecipeHeader.innerHTML = "";
     elRecipeLabel.innerHTML = "";
     elRecipeImage.innerHTML = "";
+    elRecipeIngredients.innerHTML = "";
 
     getRecipeData(params, function(data) {
         console.dir(data); // Adding telemetry during dev
         // data = data.hits; // hits is the array containing the recipes
         var recipe = data.hits[0].recipe; // return the first recipe Object
+        var recipeIngredients = getRecipeIngredients(data.hits[0].recipe.ingredientLines);
         // var tableHeaders = getTableHeaders(data[0].recipe);
         // var tableRows = getTableRows(data[0].recipe);
         //elData.innerHTML = `<table>${tableHeaders}${tableRows}</table>`
 
         elRecipeLabel.innerHTML = recipe.label;
         elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
+        elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`;
+        
 
     });
+
+
 }
