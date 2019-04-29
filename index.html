@@ -25,20 +25,24 @@
     <section class="container-fluid">
         <div class="row">
             <div class="col-4 side-content">
-                <div class="row">
+                <div class="row submission-form">
                     <div class="col">
-                        <form onsubmit="writeToDocument('chicken')">
-                            <div class="form-group">
-                                <label for="ingredientsInput">Enter ingredients that you fancy</label>
-                                <input type="text" name="" id="ingredientsInput" placeholder="Enter ingredeients">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        <!-- This isn't officially a form due to problems with calling function and linking input to button.
+                        However using some Bootstrap form utilities for formatting purposes -->
+                        <div class="form-group">
+                            <label for="params-input">What do you feel like eating today?</label>
+                            <input class="form-control" type="text" name="params" id="params-input"
+                                placeholder="E.g. Chicken">
+                            <small class="form-text text-muted" id="params-help">Try also adding in methods e.g.
+                                braised. Just remember to separate with spaces!</small>
+                        </div>
+                        <button id="submit-button" onclick="writeToDocument($('#params-input').val())" type="button"
+                            class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row ingredients-list">
                     <div class="col">
-                        
+
                     </div>
                 </div>
             </div>
@@ -61,6 +65,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script> // This script snippet links pressing the enter key to clicking the submit button to achieve the same result
+        var paramsInput = document.getElementById("params-input");
+        paramsInput.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("submit-button").click();
+            }
+        });
+    </script>
 </body>
 
 </html>
