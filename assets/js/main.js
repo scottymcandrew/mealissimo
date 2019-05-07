@@ -69,6 +69,10 @@ function getRecipeIngredients(obj) {
     
 }
 
+function getRecipeMethod(obj) {
+    var recipeMethod = [];
+}
+
 function writeToDocument(params) {
     // Clear div elements to prevent concatenation on subsequent form fills
     // var elData = document.getElementById("data");
@@ -76,11 +80,13 @@ function writeToDocument(params) {
     var elRecipeLabel = document.getElementById("recipe-label");
     var elRecipeImage = document.getElementById("recipe-image");
     var elRecipeIngredients = document.getElementById("recipe-ingredients");
+    var elRecipeLink = document.getElementById("recipe-link");
     // elData.innerHTML = "";
     // elRecipeHeader.innerHTML = "";
     elRecipeLabel.innerHTML = "";
     elRecipeImage.innerHTML = "";
     elRecipeIngredients.innerHTML = "";
+    elRecipeLink.innerHTML = "";
 
     getRecipeData(params, function(data) {
         console.dir(data); // Adding telemetry during dev
@@ -94,6 +100,7 @@ function writeToDocument(params) {
         elRecipeLabel.innerHTML = recipe.label;
         elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
         elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`;
+        elRecipeLink.innerHTML = `<a href="${recipe.url}" target="_blank">Want to cook this?</a>`;
         
 
     });

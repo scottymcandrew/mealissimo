@@ -45,6 +45,10 @@ header {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 form {
     font-size: 1em;
 }
