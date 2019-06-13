@@ -58,10 +58,11 @@ function getTableEntries(obj) { // This function is a combination of the two get
     return tableEntries;
 }
 
-function getRecipeIngredients(obj) {
+function getRecipeIngredients(arr) {
     var recipeIngredients = [];
 
-    Object.values(obj).forEach(function(item) {
+    //Object.values(obj).forEach(function(item) {
+    arr.forEach(function(item) {
         recipeIngredients.push(`<li>${item}</li>`);
     });
 
@@ -99,7 +100,7 @@ function writeToDocument(params) {
 
         elRecipeLabel.innerHTML = `<h4>${recipe.label}</h4>`;
         elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
-        elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`;
+        elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
         elRecipeLink.innerHTML = `<a href="${recipe.url}" target="_blank">Want to cook this?</a>`;
         
 
