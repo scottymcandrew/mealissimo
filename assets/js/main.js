@@ -97,7 +97,7 @@ function writeToDocument(params) {
         // var tableRows = getTableRows(data[0].recipe);
         //elData.innerHTML = `<table>${tableHeaders}${tableRows}</table>`
 
-        elRecipeLabel.innerHTML = recipe.label;
+        elRecipeLabel.innerHTML = `<h4>${recipe.label}</h4>`;
         elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
         elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`;
         elRecipeLink.innerHTML = `<a href="${recipe.url}" target="_blank">Want to cook this?</a>`;

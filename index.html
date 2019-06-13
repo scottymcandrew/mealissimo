@@ -12,51 +12,68 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/main.js"></script>
 </head>
 
-<body>
+<body class="bg-color-wild-sand">
 
-    <header>
-        <h2 class="header-text">Welcome to the only recipe search application you'll ever need!</h2>
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 order-1 order-xs-2 logo-container h-100">
+                <img src="assets/images/Logo-white.png" alt="Brand logo" class="logo">
+            </div>
+            <div class="col-md-8 order-2 order-xs-1 align-self-center header-container-right h-100">
+                <h1 class="header-text">Mealissimo</h1>
+                <p class="header-subtext">Welcome to a world of indulgent meals.<br><strong>Bellissimo!</strong></p>
+            </div>
+        
     </header>
 
     <section class="container-fluid">
         <div class="row">
             <div class="col-4 side-content">
                 <div class="row submission-form">
-                    <div class="col">
+                    <div class="col form-container text-center">
                         <!-- This isn't officially a form due to problems with calling function and linking input to button.
                         However using some Bootstrap form utilities for formatting purposes -->
-                        <div class="form-group">
-                            <label for="params-input">What do you feel like eating today?</label>
+                        <div class="form-group text-center">
+                            <label for="params-input">What meal or ingredient would be bellissimo?</label>
                             <input class="form-control" type="text" name="params" id="params-input"
                                 placeholder="E.g. Chicken">
                             <small class="form-text text-muted" id="params-help">Try also adding in methods e.g.
                                 braised. Just remember to separate with spaces!</small>
+                        </div>
+                        <div class="recipe-attributes">
+
                         </div>
                         <button id="submit-button" onclick="writeToDocument($('#params-input').val())" type="button"
                             class="btn btn-primary">Submit</button>
                     </div>
                 </div>
                 <div class="row ingredients-list">
-                    <div id="recipe-ingredients" class="col">
+                    <div id="recipe-ingredients" class="col text-center">
 
                     </div>
                 </div>
             </div>
 
             <div class="col-8 main-content">
-                <div class="row recipe-header">
-                    <div class="col">
+                <div class="row recipe-header-container">
+                    <div class="col text-center recipe-header-detail">
                         <div id="recipe-label"></div>
                         <div id="recipe-image"></div>
                     </div>
 
                 </div>
 
-                <div id="recipe-link" class="row recipe-link"></div>
+                <div class="row recipe-links">
+                    <div class="col text-center">
+                        <div id="recipe-link"></div>
+                    </div>
+                </div>
+                
 
             </div>
         </div>

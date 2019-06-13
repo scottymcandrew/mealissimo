@@ -8,6 +8,14 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.font-nixie-one {
+    font-family: 'Nixie One', cursive;
+}
+
+.font-open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
 /* Color Pallete */
 
 .bg-color-off-white {
@@ -26,29 +34,108 @@
     color: #C6AD8F;
 }
 
+.color-saratoga {
+    color: rgba(85, 84, 17, 1);
+}
+
+.bg-color-saratoga {
+    background-color: rgba(85, 84, 17, 1);
+}
+
+.bg-color-saratoga-light {
+    background-color: rgba(141, 140, 43, 1);
+}
+
+.color-wild-sand {
+    color: rgba(243, 244, 243, 1);
+}
+
+.bg-color-wild-sand {
+    background-color: rgba(243, 244, 243, 1);
+}
+
+.bg-color-wild-sand-darker {
+    background-color: rgba(203, 207, 203, 1);
+}
+
 /* Margins, Padding etc */
 
 .ingredients-list {
     margin-top: 30px;
 }
 
+/* Header */
+
+.logo-container {
+    background-color: rgba(85, 84, 17, 1);
+}
+
+.header-container-right {
+    color: rgba(85, 84, 17, 1);
+}
+
+.header-container-right h1 {
+    font-weight: 900;
+}
+
+.logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* height: 200px; */
+    transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+}
+
 /* Main Styles */
 
-html {
-    font-family: 'Source Sans Pro', sans-serif;
+html, body {
+    font-family: 'Open Sans', sans-serif !important;
+    color: rgba(85, 84, 17, 1);
+    height: 100%;
 }
 
 header {
-    font-family: 'Libre Baskerville', serif;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    font-family: 'Nixie One', cursive;
     text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nixie One', cursive;
 }
 
 a {
     text-decoration: none;
 }
 
-form {
-    font-size: 1em;
+.form-group {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2vw;
+}
+
+button {
+    background-color: rgba(85, 84, 17, 1) !important;
+    border-color: rgba(85, 84, 17, 1) !important;
+    color: rgba(243, 244, 243, 1);
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+#recipe-label >* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-container {
+    padding: 20px;
+}
+
+.recipe-header-detail {
+    padding: 20px;
 }
