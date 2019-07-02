@@ -112,10 +112,15 @@ h4,
 h5,
 h6 {
     font-family: 'Nixie One', cursive;
+    font-weight: 900;
 }
 
 a {
     text-decoration: none;
+}
+
+a {
+    color: rgba(85, 84, 17, 1);
 }
 
 .form-group {
@@ -137,8 +142,7 @@ li {
     list-style-type: none;
 }
 
-#recipe-label>*,
-#other-recipe-links>* {
+#other-recipe-links {
     font-family: 'Open Sans', sans-serif;
 }
 
