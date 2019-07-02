@@ -72,6 +72,9 @@
 
 .header-container-right {
     color: rgba(85, 84, 17, 1);
+    background-color: rgba(203, 207, 203, 1);
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header-container-right h1 {
@@ -90,7 +93,8 @@
 
 /* Main Styles */
 
-html, body {
+html,
+body {
     font-family: 'Open Sans', sans-serif !important;
     color: rgba(85, 84, 17, 1);
     height: 100%;
@@ -101,7 +105,12 @@ header {
     text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Nixie One', cursive;
 }
 
@@ -128,7 +137,8 @@ li {
     list-style-type: none;
 }
 
-#recipe-label >* {
+#recipe-label>*,
+#other-recipe-links>* {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -138,4 +148,13 @@ li {
 
 .recipe-header-detail {
     padding: 20px;
+}
+
+.recipe-links {
+    margin-bottom: 25px;
+}
+
+.other-recipes {
+    margin-top: 25px;
+    /* background-color: rgba(85, 84, 17, 1); */
 }
