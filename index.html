@@ -46,13 +46,20 @@
                                 braised. Just remember to separate with spaces!</small>
                         </div>
                         <div class="recipe-attributes">
-
+                            <label for="excluded-ingredients-input">Is there anything you don't like?</label>
+                            <input class="form-control" type="text" name="excluded-ingredients" id="excluded-ingredients-input"
+                                placeholder="E.g. Chocolate (why???)">
+                            <label for="max-calories-input">Watching your weight? Enter max calories if you must</label>
+                            <input class="form-control" type="number" name="max-calories" id="max-calories-input" min=10 max=50000
+                                placeholder="Minimum 50">
+                            <input type="radio" name="health" value="vegetarian"> Vegetarian<br>
+                            <input type="radio" name="health" value="vegan"> Vegan<br>
                         </div>
-                        <button id="submit-button" onclick="writeToDocument($('#params-input').val())" type="button"
+                        <button id="submit-button" onclick="writeToDocument($('#params-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val())" type="button"
                             class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-                <div class="row ingredients-list">
+                <div class="row other-recipes">
                     <div id="other-recipe-links" class="col text-center">
                     
                     </div>
@@ -68,13 +75,13 @@
 
                 </div>
 
-                <div class="row recipe-links">
+                <div class="row recipe-link">
                     <div class="col text-center">
                         <div id="recipe-link"></div>
                     </div>
                 </div>
                 
-                <div class="row other-recipes">
+                <div class="row ingredients-list">
                     <div class="col text-center">
                         <div id="recipe-ingredients"></div>
                     </div>

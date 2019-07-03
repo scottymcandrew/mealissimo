@@ -117,10 +117,12 @@ h6 {
 
 a {
     text-decoration: none;
+    color: rgba(85, 84, 17, 1);
 }
 
-a {
-    color: rgba(85, 84, 17, 1);
+a:hover {
+    color: rgba(141, 140, 43, 1);
+    text-decoration: none;
 }
 
 .form-group {
@@ -128,9 +130,17 @@ a {
     font-size: 2vw;
 }
 
+#submit-button {
+    margin-top: 15px;
+}
+
 button {
     background-color: rgba(85, 84, 17, 1) !important;
     border-color: rgba(85, 84, 17, 1) !important;
+    color: rgba(243, 244, 243, 1);
+}
+
+button a {
     color: rgba(243, 244, 243, 1);
 }
 
@@ -154,11 +164,19 @@ li {
     padding: 20px;
 }
 
-.recipe-links {
+.recipe-link {
     margin-bottom: 25px;
 }
 
 .other-recipes {
     margin-top: 25px;
     /* background-color: rgba(85, 84, 17, 1); */
+}
+
+.other-recipes li {
+    border: 2px solid rgba(85, 84, 17, 1);
+}
+
+.ingredients-list h2 {
+    margin-bottom: 25px;
 }
