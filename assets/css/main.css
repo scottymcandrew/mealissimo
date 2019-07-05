@@ -168,6 +168,10 @@ li {
     margin-bottom: 25px;
 }
 
+.recipe-attributes input {
+    margin-bottom: 20px;
+}
+
 .other-recipes {
     margin-top: 25px;
     /* background-color: rgba(85, 84, 17, 1); */

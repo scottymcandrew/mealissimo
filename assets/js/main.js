@@ -4,20 +4,27 @@
 // Like this: q=chicken+mushroom
 // Maximum hits is 100 on the free plan. Pagination isn't possible with the search API
 
-const recipeApiEndpoint = "https://api.edamam.com/search?";
+const recipeApiEndpoint = "https://api.edamam.com/search?q=";
 const recipeApiKeyID = "6047f138";
 const recipeApiKey = "fccffc05eb1ab43b73f574ec0ffdab5a";
-var caloriesRangeFrom = 0;
-var caloriesRangeTo = 600;
-var ingredientsList = [];
-var excludedIngredients = [];
-var data;
 
 // Function call to return data from Recipe API
 // This is a callback function, expecting the parameter "cb", which is another function.
-function getRecipeData(params, cals, excluded, health, cb) {
+function getRecipeData(searchString, cals, excluded, health, cb) {
+    console.log(health);
+    // Building out the base API call
+    var params = searchString + "&app_id=" + recipeApiKeyID + "&app_key=" + recipeApiKey + "&from=0&to=100&" + "&calories=" + cals;
+    // The health parameter cannot be empty. If 'no' is selected on the form and that is passed, an error will be thrown.
+    // If no is passed, we will simply clear the whole health parameter from the API call
+    if (health != "no") {
+        params = params + "&health=" + health;
+    }
+    // If excluded is left as an empty string we will remove that parameter from the API call
+    if (excluded != "") {
+        params = params + "&excluded=" + excluded;
+    }
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", recipeApiEndpoint + "q=" + params + "&calories=" + cals + "&excluded" + excluded + "&app_id=6047f138&app_key=fccffc05eb1ab43b73f574ec0ffdab5a&from=0&to=100&health=alcohol-free");
+    xhr.open("GET", recipeApiEndpoint + params);
     xhr.send();
 
     xhr.onreadystatechange = function () {
@@ -52,10 +59,11 @@ function getMoreRecipeLinks(arr) {
     return recipeLinks;
 }
 
-function writeToDocument(params, cals, excluded, health) {
+function writeToDocument(searchString, cals, excluded, health) {
     // Clear div elements to prevent concatenation on subsequent form fills
     // var elData = document.getElementById("data");
     // var elRecipeHeader = document.getElementById("recipe-header");
+    console.log(health);
     var elRecipeLabel = document.getElementById("recipe-label");
     var elRecipeImage = document.getElementById("recipe-image");
     var elRecipeIngredients = document.getElementById("recipe-ingredients");
@@ -71,7 +79,7 @@ function writeToDocument(params, cals, excluded, health) {
 
     if (cals > 49) {
 
-        getRecipeData(params, cals, excluded, health, function (data) {
+        getRecipeData(searchString, cals, excluded, health, function (data) {
             if (data.hits.length > 0) {
                 console.dir(data); // Adding telemetry during dev
                 // data = data.hits; // hits is the array containing the recipes

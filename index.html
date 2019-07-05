@@ -39,10 +39,10 @@
                         <!-- This isn't officially a form due to problems with calling function and linking input to button.
                         However using some Bootstrap form utilities for formatting purposes -->
                         <div class="form-group text-center">
-                            <label for="params-input">What meal or ingredient would be bellissimo?</label>
-                            <input class="form-control" type="text" name="params" id="params-input"
+                            <label for="searchString-input">What meal or ingredient would be bellissimo?</label>
+                            <input class="form-control" type="text" name="searchString" id="searchString-input"
                                 placeholder="E.g. Chicken">
-                            <small class="form-text text-muted" id="params-help">Try also adding in methods e.g.
+                            <small class="form-text text-muted" id="searchString-help">Try also adding in methods e.g.
                                 braised. Just remember to separate with spaces!</small>
                         </div>
                         <div class="recipe-attributes">
@@ -50,12 +50,18 @@
                             <input class="form-control" type="text" name="excluded-ingredients" id="excluded-ingredients-input"
                                 placeholder="E.g. Chocolate (why???)">
                             <label for="max-calories-input">Watching your weight? Enter max calories if you must</label>
-                            <input class="form-control" type="number" name="max-calories" id="max-calories-input" min=10 max=50000
+                            <input class="form-control" type="number" name="max-calories" id="max-calories-input" value="500"
                                 placeholder="Minimum 50">
-                            <input type="radio" name="health" value="vegetarian"> Vegetarian<br>
-                            <input type="radio" name="health" value="vegan"> Vegan<br>
+                            <label for="health-input">Vegetables only?</label>
+                            <select id="health-input">
+                                <option value="no">No</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                            </select>
+                            <!-- <input type="radio" name="health" value="vegetarian"> Vegetarian<br> -->
+                            <!-- <input type="radio" name="health" value="vegan"> Vegan<br> -->
                         </div>
-                        <button id="submit-button" onclick="writeToDocument($('#params-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val())" type="button"
+                        <button id="submit-button" onclick="writeToDocument($('#searchString-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val(), $('#health-input').val())" type="button"
                             class="btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -103,8 +109,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script> // This script snippet links pressing the enter key to clicking the submit button to achieve the same result
-        var paramsInput = document.getElementById("params-input");
-        paramsInput.addEventListener("keyup", function (event) {
+        var searchStringInput = document.getElementById("searchString-input");
+        searchStringInput.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 document.getElementById("submit-button").click();
