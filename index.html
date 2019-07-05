@@ -48,7 +48,7 @@
                         <div class="recipe-attributes">
                             <label for="excluded-ingredients-input">Is there anything you don't like?</label>
                             <input class="form-control" type="text" name="excluded-ingredients" id="excluded-ingredients-input"
-                                placeholder="E.g. Chocolate (why???)">
+                                placeholder="E.g. Chocolate (why?!)">
                             <label for="max-calories-input">Watching your weight? Enter max calories if you must</label>
                             <input class="form-control" type="number" name="max-calories" id="max-calories-input" value="500"
                                 placeholder="Minimum 50">
@@ -110,7 +110,21 @@
         crossorigin="anonymous"></script>
     <script> // This script snippet links pressing the enter key to clicking the submit button to achieve the same result
         var searchStringInput = document.getElementById("searchString-input");
+        var excludedInput = document.getElementById("excluded-ingredients-input");
+        var caloriesInput = document.getElementById("max-calories-input");
         searchStringInput.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("submit-button").click();
+            }
+        });
+        excludedInput.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("submit-button").click();
+            }
+        });
+        caloriesInput.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 document.getElementById("submit-button").click();
