@@ -85,7 +85,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    /* height: 200px; */
     transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
