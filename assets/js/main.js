@@ -108,7 +108,6 @@ function writeToDocument(searchString, cals, excluded, health) {
 
                 // Remove search form to tidy interface
                 var formContainer = document.getElementsByClassName("form-container");
-                console.dir(formContainer);
                 formContainer[0].style.display = "none";
                 
             }
