@@ -86,12 +86,18 @@ function writeToDocument(searchString, cals, excluded, health) {
                 var recipeIngredients = getRecipeIngredients(data.hits[recipeNumber].recipe.ingredientLines);
                 var moreRecipeLinks = getMoreRecipeLinks(data.hits);
 
+                // Reveal the hidden recipe details container
+                var recipeLinkContainer = document.getElementsByClassName("recipe-link");
+                var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
+                recipeLinkContainer[0].style.display = "block";
+                ingredientsListContainer[0].style.display = "block";
+
                 elRecipeLabel.innerHTML = `<h2>${recipe.label}</h2>`;
                 elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
                 elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
                 elRecipeLink.innerHTML = `<button class="btn btn-primary"><a href="${recipe.url}" target="_blank">Take me to the magic!</a></button>`;
 
-                elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><p>Alternatively click the logo to try again.</p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
+                elRecipelinksContent.innerHTML = `<p><em><u>Try one of these...</u></em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
                 
                 // Add functionality to the collapsible other recipe links section
                 var coll = document.getElementById("recipe-links-collapsible");
@@ -99,10 +105,10 @@ function writeToDocument(searchString, cals, excluded, health) {
                 coll.addEventListener("click", function() {
                     this.classList.toggle("active");
                     var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
                       } else {
-                        content.style.display = "block";
+                        content.style.maxHeight = content.scrollHeight + "px";
                       }
                 });
 

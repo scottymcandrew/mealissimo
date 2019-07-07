@@ -1,4 +1,4 @@
-/* Font styles */
+/* ---------------- Font styles ---------------- */
 
 .font-libre-baskerville {
     font-family: 'Libre Baskerville', serif;
@@ -16,7 +16,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-/* Color Pallete */
+/* ---------------- Color Pallete ---------------- */
 
 .bg-color-off-white {
     background-color: #F6F4F2;
@@ -58,16 +58,15 @@
     background-color: rgba(203, 207, 203, 1);
 }
 
-/* Margins, Padding etc */
-
-.ingredients-list {
-    margin-top: 30px;
-}
-
-/* Header */
+/* ---------------- Header ---------------- */
 
 .logo-container {
     background-color: rgba(85, 84, 17, 1);
+    color: #fff;
+}
+
+.logo-container h2 {
+    display: none;
 }
 
 .header-container-right {
@@ -91,12 +90,25 @@
     -webkit-transition: all .5s ease-in-out;
 }
 
-/* Main Styles */
+/* ---------------- Main Styles ---------------- */
+
+.parallax {
+    background-image: url("../images/background-image-transparent.png");
+
+    /* Set a specific height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 html,
 body {
     font-family: 'Open Sans', sans-serif !important;
-    color: rgba(85, 84, 17, 1);
+    color: rgba(44, 43, 7, 1);
     height: 100%;
 }
 
@@ -117,12 +129,20 @@ h6 {
 
 a {
     text-decoration: none;
-    color: rgba(85, 84, 17, 1);
+    color: rgba(44, 43, 7, 1);
 }
 
 a:hover {
     color: rgba(141, 140, 43, 1);
     text-decoration: none;
+}
+
+.main-content {
+    color: rgba(44, 43, 7, 1);
+}
+
+.side-content {
+    background-color: rgba(203, 207, 203, 1);
 }
 
 .form-group {
@@ -137,11 +157,27 @@ a:hover {
 button {
     background-color: rgba(85, 84, 17, 1) !important;
     border-color: rgba(85, 84, 17, 1) !important;
-    color: rgba(243, 244, 243, 1);
+    color: rgba(243, 244, 243, 1) !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: none !important;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: none !important;
 }
 
 button a {
     color: rgba(243, 244, 243, 1);
+}
+
+.form-control:focus {
+    border-color: rgba(44, 43, 7, 1);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(44, 43, 7, 1);
 }
 
 ul {
@@ -156,8 +192,18 @@ li {
     font-family: 'Open Sans', sans-serif;
 }
 
+#other-recipe-links h4 {
+    padding-bottom: 15px;
+}
+
 .form-container {
     padding: 20px;
+    font-weight: 500;
+}
+
+.form-container small {
+    font-weight: 900;
+    color: rgba(44, 43, 7, 1) !important;
 }
 
 .recipe-header-detail {
@@ -165,6 +211,20 @@ li {
 }
 
 .recipe-link {
+    margin-bottom: 25px;
+    /* Hidden before populated */
+    display: none;
+    overflow: hidden;
+}
+
+.ingredients-list {
+    margin-top: 30px;
+    /* Hidden before populated */
+    display: none;
+    overflow: hidden;
+}
+
+.ingredients-list h2 {
     margin-bottom: 25px;
 }
 
@@ -176,14 +236,6 @@ li {
     margin-top: 25px;
 }
 
-.other-recipes li {
-    border: 2px solid rgba(85, 84, 17, 1);
-}
-
-.ingredients-list h2 {
-    margin-bottom: 25px;
-}
-
 #other-recipe-links {
     margin-bottom: 1rem;
 }
@@ -191,7 +243,8 @@ li {
 /* Style the collapsible content. Note: hidden by default */
 #recipe-links-content {
     padding: 0 18px;
-    display: none;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
     overflow: hidden;
 }
 
@@ -202,4 +255,26 @@ li {
 #recipe-links-collapsible {
     display: none;
     overflow: hidden;
+}
+
+/* ---------------- Media Queries ---------------- */
+
+@media (max-width: 768px) {
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-container h2 {
+        display: block;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .main-row,
+    .main-section {
+        height: 100%;
+    }
 }
