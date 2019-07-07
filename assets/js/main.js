@@ -13,7 +13,7 @@ const recipeApiKey = "fccffc05eb1ab43b73f574ec0ffdab5a";
 function getRecipeData(searchString, cals, excluded, health, cb) {
     console.log(health);
     // Building out the base API call
-    var params = searchString + "&app_id=" + recipeApiKeyID + "&app_key=" + recipeApiKey + "&from=0&to=100&" + "&calories=" + cals;
+    var params = searchString + "&app_id=" + recipeApiKeyID + "&app_key=" + recipeApiKey + "&from=0&to=25&" + "&calories=" + cals;
     // The health parameter cannot be empty. If 'no' is selected on the form and that is passed, an error will be thrown.
     // If no is passed, we will simply clear the whole health parameter from the API call
     if (health != "no") {
@@ -68,23 +68,18 @@ function writeToDocument(searchString, cals, excluded, health) {
     var elRecipeImage = document.getElementById("recipe-image");
     var elRecipeIngredients = document.getElementById("recipe-ingredients");
     var elRecipeLink = document.getElementById("recipe-link");
-    var elOtherRecipeLinks = document.getElementById("other-recipe-links");
-    // elData.innerHTML = "";
-    // elRecipeHeader.innerHTML = "";
+    var elRecipelinksContent = document.getElementById("recipe-links-content");
     elRecipeLabel.innerHTML = "";
     elRecipeImage.innerHTML = "";
     elRecipeIngredients.innerHTML = "";
     elRecipeLink.innerHTML = "";
-    elOtherRecipeLinks.innerHTML = "";
+    elRecipelinksContent.innerHTML = "";
 
     if (cals > 49) {
 
         getRecipeData(searchString, cals, excluded, health, function (data) {
             if (data.hits.length > 0) {
                 console.dir(data); // Adding telemetry during dev
-                // data = data.hits; // hits is the array containing the recipes
-                // var recipeLinks = data.hits;
-                // console.dir(recipeLinks);
                 var recipeCount = data.hits.length;
                 var recipeNumber = Math.floor(Math.random() * recipeCount);  // returns a random integer from 0 to number of recipes (up to 100) to be used to randomise the first recipe hit.
                 var recipe = data.hits[recipeNumber].recipe; // return the selected recipe Object
@@ -96,7 +91,26 @@ function writeToDocument(searchString, cals, excluded, health) {
                 elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
                 elRecipeLink.innerHTML = `<button class="btn btn-primary"><a href="${recipe.url}" target="_blank">Take me to the magic!</a></button>`;
 
-                elOtherRecipeLinks.innerHTML = `<h4>This doesn't tickle your taste-buds?</h4><p><em>Try one of these...</em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
+                elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><p>Alternatively click the logo to try again.</p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
+                
+                // Add functionality to the collapsible other recipe links section
+                var coll = document.getElementById("recipe-links-collapsible");
+                coll.style.display = "inline";
+                coll.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                      } else {
+                        content.style.display = "block";
+                      }
+                });
+
+                // Remove search form to tidy interface
+                var formContainer = document.getElementsByClassName("form-container");
+                console.dir(formContainer);
+                formContainer[0].style.display = "none";
+                
             }
             else {
                 elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;

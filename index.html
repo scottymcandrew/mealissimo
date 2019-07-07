@@ -22,9 +22,9 @@
     <header class="container-fluid">
         <div class="row">
             <div class="col-md-4 order-md-1 order-2 logo-container">
-                <img src="assets/images/Logo-white.png" alt="Brand logo" class="logo">
+                <a href="index.html"><img src="assets/images/Logo-white.png" alt="Brand logo" class="logo"></a>
             </div>
-            <div class="col-md-8 order-md-2 order-1 d-flex header-container-right">
+            <div class="col-md-8 order-md-2 order-1 d-none d-md-flex header-container-right">
                 <h1 class="header-text">Mealissimo</h1>
                 <p class="header-subtext">Welcome to a world of indulgent meals.<br><strong>Bellissimo!</strong></p>
             </div>
@@ -47,11 +47,11 @@
                         </div>
                         <div class="recipe-attributes">
                             <label for="excluded-ingredients-input">Is there anything you don't like?</label>
-                            <input class="form-control" type="text" name="excluded-ingredients" id="excluded-ingredients-input"
-                                placeholder="E.g. Chocolate (why?!)">
+                            <input class="form-control" type="text" name="excluded-ingredients"
+                                id="excluded-ingredients-input" placeholder="E.g. Chocolate (why?!)">
                             <label for="max-calories-input">Watching your weight? Enter max calories if you must</label>
-                            <input class="form-control" type="number" name="max-calories" id="max-calories-input" value="500"
-                                placeholder="Minimum 50">
+                            <input class="form-control" type="number" name="max-calories" id="max-calories-input"
+                                value="500" placeholder="Minimum 50">
                             <label for="health-input">Vegetables only?</label>
                             <select id="health-input">
                                 <option value="no">No</option>
@@ -59,13 +59,17 @@
                                 <option value="vegan">Vegan</option>
                             </select>
                         </div>
-                        <button id="submit-button" onclick="writeToDocument($('#searchString-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val(), $('#health-input').val())" type="button"
-                            class="btn btn-primary">Submit</button>
+                        <button id="submit-button"
+                            onclick="writeToDocument($('#searchString-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val(), $('#health-input').val())"
+                            type="button" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
                 <div class="row other-recipes">
                     <div id="other-recipe-links" class="col text-center">
-                    
+                        <button class="btn btn-primary" id="recipe-links-collapsible">Need more? Click here.</button>
+                        <div id="recipe-links-content">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,7 +78,8 @@
                 <div class="row recipe-header-container">
                     <div class="col text-center recipe-header-detail">
                         <div id="recipe-label"></div>
-                        <div id="recipe-image"><img class="img-fluid" src="assets/images/BrandBookCover_1600x900.png"/></div>
+                        <div id="recipe-image"><a href="index.html"><img class="img-fluid" src="assets/images/BrandBookCover_1600x900.png" /></a>
+                        </div>
                     </div>
 
                 </div>
@@ -84,7 +89,7 @@
                         <div id="recipe-link"></div>
                     </div>
                 </div>
-                
+
                 <div class="row ingredients-list">
                     <div class="col text-center">
                         <div id="recipe-ingredients"></div>

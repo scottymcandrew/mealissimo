@@ -79,6 +79,7 @@
 
 .header-container-right h1 {
     font-weight: 900;
+    margin-top: .5rem;
 }
 
 .logo {
@@ -173,7 +174,6 @@ li {
 
 .other-recipes {
     margin-top: 25px;
-    /* background-color: rgba(85, 84, 17, 1); */
 }
 
 .other-recipes li {
@@ -182,4 +182,24 @@ li {
 
 .ingredients-list h2 {
     margin-bottom: 25px;
+}
+
+#other-recipe-links {
+    margin-bottom: 1rem;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+#recipe-links-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+
+#recipe-links-content p {
+    margin-top: 1rem;
+}
+
+#recipe-links-collapsible {
+    display: none;
+    overflow: hidden;
 }
