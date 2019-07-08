@@ -1,8 +1,6 @@
 // Example Recipe Search API Call:
 // "https://api.edamam.com/search?q=chicken&app_id=6047f138&app_key=fccffc05eb1ab43b73f574ec0ffdab5a&from=0&to=3&calories=591-722&health=alcohol-free"
-// Multiple ingredients should be separated with +
-// Like this: q=chicken+mushroom
-// Maximum hits is 100 on the free plan. Pagination isn't possible with the search API
+// Maximum hits is 100 on the free plan. Pagination isn't possible with the search API, so I have made the decision to only pull in 25 results and hide them initially behind a button
 
 const recipeApiEndpoint = "https://api.edamam.com/search?q=";
 const recipeApiKeyID = "6047f138";
@@ -29,7 +27,6 @@ function getRecipeData(searchString, cals, excluded, health, cb) {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             // Here we are executing the callback function which was passed in as a parameter
-            // In this case, it is 'printDataToConsole'
             cb(JSON.parse(this.responseText));
         }
     };
