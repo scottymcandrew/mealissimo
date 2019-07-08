@@ -95,7 +95,7 @@ function writeToDocument(searchString, cals, excluded, health) {
             cals = 5000;
         }
 
-        if (cals > 49) {
+        if (cals > 49 && cals < 5001) {
 
             getRecipeData(searchString, cals, excluded, health, function (data) {
                 if (data.hits.length > 0) {
@@ -137,7 +137,7 @@ function writeToDocument(searchString, cals, excluded, health) {
         else {
             elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;
             elRecipeImage.innerHTML = `<img src="assets/images/wet-corgi.jpg"/>`;
-            elRecipeLink.innerHTML = `<p>Our Corgi is too thin. We need to add more calories!`;
+            elRecipeLink.innerHTML = `<p>Our Corgi is too thin. Try a different number of calories!`;
         }
     }
     else { // Special character was inputted, failed RegEx and so displaying error image and message
