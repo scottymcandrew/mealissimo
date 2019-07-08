@@ -12,6 +12,8 @@ A recipe is chosen at random from the list of results. The remaining results are
 
 ## UX
 
+*Wireframes are in the wireframes directory*
+
 One requirement of the UX design was that it had to be a single-page application (SPA). This was a unique challenge in that there is potentially a lot of information to be presented in a limited space.
 
 I decided to go with the 'rule of threes' for the design itself. The search conditions area is in the left 1/3 section on medium > large screens, with the main recipe area taking up the remaining 2/3 space.
