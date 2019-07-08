@@ -85,6 +85,11 @@ function writeToDocument(searchString, cals, excluded, health) {
     ingredientsListContainer[0].style.display = "block";
     mainContent[0].style.display = "block";
 
+    // If calories isn't entered, set the value high so there are no limits
+    if (cals === '') {
+        cals = 5000;
+    }
+
     if (cals > 49) {
 
         getRecipeData(searchString, cals, excluded, health, function (data) {
