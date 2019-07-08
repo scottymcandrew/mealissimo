@@ -134,6 +134,7 @@ a {
 
 .main-content {
     color: rgba(44, 43, 7, 1);
+    display: none;
 }
 
 .side-content {

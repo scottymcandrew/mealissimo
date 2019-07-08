@@ -77,11 +77,13 @@ function writeToDocument(searchString, cals, excluded, health) {
     formContainer[0].style.display = "none";
 
     // Creating variables for the hidden containers
+    var mainContent = document.getElementsByClassName("main-content");
     var recipeLinkContainer = document.getElementsByClassName("recipe-link-container");
     var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
     // Reveal the hidden recipe details container
     recipeLinkContainer[0].style.display = "block";
     ingredientsListContainer[0].style.display = "block";
+    mainContent[0].style.display = "block";
 
     if (cals > 49) {
 
