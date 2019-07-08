@@ -35,7 +35,7 @@ The API does not return the recipe method, and so there is a button which links 
 - As a chef, I wish to explore recipes easily for inspiration to apply to my own recipes.
 
 ## Features
- 
+
 ### Existing Features
 
 - Feature 1 - Natural language input field allowing users to enter seach conditions for what meal/ingredient/method they wish to find.
@@ -98,7 +98,7 @@ There is only a single page to test, being an SPA. That being said there are a n
 
 This site was developed using Visual Studio Code and is being hosted on GitHub pages at mealissimo.scottymcandrew.com
 
-To run locally all files from the Git repo are required and need to be hosted on a local web server. This can be achieved preferably with your IDE's live server feature.
+To run locally all files from the Git repo are required and need to be hosted on a local web server. This can be achieved preferably with your IDE's live server feature. Outbound internet access is required in order to reach the API.
 
 ## Credits
 
@@ -110,6 +110,7 @@ To run locally all files from the Git repo are required and need to be hosted on
 ### Media
 
 - Google images for the local image content.
+- Recipe resources are pulled in from numerous external sources via the API, links to the original site are detailed.
 - Brandbuilder.ai for the branding, colour scheme and background image.
 
 ### Acknowledgements

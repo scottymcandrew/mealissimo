@@ -48,7 +48,7 @@ function getMoreRecipeLinks(arr) {
     var recipeLinks = [];
 
     arr.forEach(function (item) {
-        recipeLinks.push(`<li><a href="${item.recipe.url}" target="_blank"> ${item.recipe.label} </a></li>`)
+        recipeLinks.push(`<li><a href="${item.recipe.url}" target="_blank"> ${item.recipe.label} </a></li>`);
     });
 
     return recipeLinks;
@@ -111,9 +111,9 @@ function writeToDocument(searchString, cals, excluded, health) {
                     elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
 
                     // Add functionality to the collapsible other recipe links section
-                    var coll = document.getElementById("recipe-links-collapsible");
-                    coll.style.display = "inline";
-                    coll.addEventListener("click", function () {
+                    var coll = document.getElementsByClassName("collapsible");
+                    coll[0].style.display = "inline";
+                    coll[0].addEventListener("click", function () {
                         this.classList.toggle("active");
                         var content = this.nextElementSibling;
                         if (content.style.maxHeight) {

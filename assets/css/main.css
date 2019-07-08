@@ -260,6 +260,26 @@ li a:hover {
 #recipe-links-collapsible {
     display: none;
     overflow: hidden;
+    color: white !important;
+}
+
+.collapsible:after {
+    content: '\f063'; /* Unicode character for "plus" sign (+) */
+    color: white !important;
+    float: right !important;
+    margin-left: 5px !important;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+}
+
+.active:after {
+    content: "\f062";
+    /* Unicode character for "minus" sign (-) */
+    color: white !important;
+    float: right !important;
+    margin-left: 5px !important;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
 }
 
 /* ---------------- Media Queries ---------------- */
@@ -283,7 +303,7 @@ li a:hover {
 }
 
 @media (max-width: 350px) {
-    .logo-container > h3 {
+    .logo-container>h3 {
         font-size: 1rem !important;
     }
 
