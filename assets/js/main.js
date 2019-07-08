@@ -99,7 +99,7 @@ function writeToDocument(searchString, cals, excluded, health) {
                 elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
                 elRecipeLink.innerHTML = `<button class="btn btn-primary"><a href="${recipe.url}" target="_blank">Take me to the magic!</a></button>`;
 
-                elRecipelinksContent.innerHTML = `<p><em><u>Try one of these...</u></em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
+                elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
                 
                 // Add functionality to the collapsible other recipe links section
                 var coll = document.getElementById("recipe-links-collapsible");

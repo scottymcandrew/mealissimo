@@ -132,11 +132,6 @@ a {
     color: rgba(44, 43, 7, 1);
 }
 
-a:hover {
-    color: rgba(141, 140, 43, 1);
-    text-decoration: none;
-}
-
 .main-content {
     color: rgba(44, 43, 7, 1);
 }
@@ -186,6 +181,24 @@ ul {
 
 li {
     list-style-type: none;
+    border-bottom: 2px solid rgba(141, 140, 43, 1);
+}
+
+li:last-child {
+    border: none;
+}
+
+li a {
+    -webkit-transition: font-size 0.3s ease;
+    -moz-transition: font-size 0.3s ease;
+    -o-transition: font-size 0.3s ease;
+    -ms-transition: font-size 0.3s ease;
+    transition: font-size 0.3s ease;
+}
+
+li a:hover {
+    font-size: 1.2rem;
+    text-decoration: none;
 }
 
 #other-recipe-links {
@@ -226,6 +239,10 @@ li {
 
 .ingredients-list h2 {
     margin-bottom: 25px;
+}
+
+.ingredients-list li {
+    border-bottom: 3px dotted rgba(141, 140, 43, 1);
 }
 
 .recipe-attributes input {
@@ -273,8 +290,16 @@ li {
 }
 
 @media (min-width: 768px) {
+
     .main-row,
     .main-section {
         height: 100%;
+    }
+}
+
+/* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
     }
 }
