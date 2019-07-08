@@ -9,8 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_io/favicon-16x16.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nixie+One|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" type="text/css" />
@@ -42,18 +41,15 @@
                         However using some Bootstrap form utilities for formatting purposes -->
                         <div class="form-group text-center">
                             <label for="searchString-input">What meal or ingredient would be bellissimo?</label>
-                            <input class="form-control" type="text" name="searchString" id="searchString-input"
-                                placeholder="E.g. Chicken">
+                            <input class="form-control" type="text" name="searchString" id="searchString-input" placeholder="E.g. Chicken">
                             <small class="form-text text-muted" id="searchString-help">Try also adding in methods e.g.
                                 braised. Just remember to separate with spaces!</small>
                         </div>
                         <div class="recipe-attributes">
                             <label for="excluded-ingredients-input">Is there anything you don't like?</label>
-                            <input class="form-control" type="text" name="excluded-ingredients"
-                                id="excluded-ingredients-input" placeholder="E.g. Chocolate (why?!)">
+                            <input class="form-control" type="text" name="excluded-ingredients" id="excluded-ingredients-input" placeholder="E.g. Chocolate (why?!)">
                             <label for="max-calories-input">Watching your weight? Enter max calories if you must</label>
-                            <input class="form-control" type="number" name="max-calories" id="max-calories-input"
-                                value="500" placeholder="Minimum 50">
+                            <input class="form-control" type="number" name="max-calories" id="max-calories-input" value="500" placeholder="Minimum 50">
                             <label for="health-input">Vegetables only?</label>
                             <select id="health-input">
                                 <option value="no">No</option>
@@ -61,14 +57,12 @@
                                 <option value="vegan">Vegan</option>
                             </select>
                         </div>
-                        <button id="submit-button"
-                            onclick="writeToDocument($('#searchString-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val(), $('#health-input').val())"
-                            type="button" class="btn btn-primary">Submit</button>
+                        <button id="submit-button" onclick="writeToDocument($('#searchString-input').val(), $('#max-calories-input').val(), $('#excluded-ingredients-input').val(), $('#health-input').val())" type="button" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
                 <div class="row other-recipes">
                     <div id="other-recipe-links" class="col text-center">
-                        <h4>Click the logo at any time to start again</h4>
+                        <button class="btn btn-primary" id="reset-button" onClick="location.href=location.href">Start again</button>
                         <button class="btn btn-primary" id="recipe-links-collapsible">Don't fancy this? Click here to discover more!</button>
                         <div id="recipe-links-content">
 
@@ -107,11 +101,8 @@
 
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script> // This script snippet links pressing the enter key to clicking the submit button to achieve the same result
         var searchStringInput = document.getElementById("searchString-input");
         var excludedInput = document.getElementById("excluded-ingredients-input");

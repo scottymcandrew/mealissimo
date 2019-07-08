@@ -254,6 +254,11 @@ li a:hover {
     margin-top: 25px;
 }
 
+.other-recipes button {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
 #other-recipe-links {
     margin-bottom: 1rem;
 }
