@@ -114,10 +114,6 @@ a {
     display: none;
 }
 
-#recipe-image img {
-    width: 100%;
-}
-
 .side-content {
     background-color: rgba(203, 207, 203, 1);
 }
@@ -298,6 +294,10 @@ li a:hover {
     .logo-container img {
         height: 75%;
         width: 75%;
+    }
+
+    #recipe-image img {
+        width: 100%;
     }
 
 }
