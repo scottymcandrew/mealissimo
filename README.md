@@ -102,6 +102,11 @@ This site was developed using Visual Studio Code and is being hosted on GitHub p
 
 To run locally all files from the Git repo are required and need to be hosted on a local web server. This can be achieved preferably with your IDE's live server feature. Outbound internet access is required in order to reach the API.
 
+- Installation
+    1. Copy all files except the wireframes folder to the web server, preserving the directory structure.
+    2. Update DNS to point to server IP address. If this is the only site on the web server the files/folders can exist in the web root folder (exact folder differs between servers/OSes, please consult the relevant manual).
+    3. Ensure web server has outbound internet access to contact the API.
+
 ## Credits
 
 ### Content
