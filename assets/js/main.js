@@ -11,7 +11,6 @@ const recipeApiKey = "fccffc05eb1ab43b73f574ec0ffdab5a";
 // Function call to return data from Recipe API
 // This is a callback function, expecting the parameter "cb", which is another function.
 function getRecipeData(searchString, cals, excluded, health, cb) {
-    console.log(health);
     // Building out the base API call
     var params = searchString + "&app_id=" + recipeApiKeyID + "&app_key=" + recipeApiKey + "&from=0&to=25&" + "&calories=" + cals;
     // The health parameter cannot be empty. If 'no' is selected on the form and that is passed, an error will be thrown.
@@ -59,79 +58,109 @@ function getMoreRecipeLinks(arr) {
 }
 
 function writeToDocument(searchString, cals, excluded, health) {
-    // Clear div elements to prevent concatenation on subsequent form fills
-    console.log(health);
-    var elRecipeLabel = document.getElementById("recipe-label");
-    var elRecipeImage = document.getElementById("recipe-image");
-    var elRecipeIngredients = document.getElementById("recipe-ingredients");
-    var elRecipeLink = document.getElementById("recipe-link");
-    var elRecipelinksContent = document.getElementById("recipe-links-content");
-    elRecipeLabel.innerHTML = "";
-    elRecipeImage.innerHTML = "";
-    elRecipeIngredients.innerHTML = "";
-    elRecipeLink.innerHTML = "";
-    elRecipelinksContent.innerHTML = "";
 
-    // Remove search form to tidy interface
-    var formContainer = document.getElementsByClassName("form-container");
-    formContainer[0].style.display = "none";
+    var stringRegex = new RegExp(/^[\w\-\s]*$/);
+    console.log(stringRegex.test('%'));
 
-    // Creating variables for the hidden containers
-    var mainContent = document.getElementsByClassName("main-content");
-    var recipeLinkContainer = document.getElementsByClassName("recipe-link-container");
-    var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
-    // Reveal the hidden recipe details container
-    recipeLinkContainer[0].style.display = "block";
-    ingredientsListContainer[0].style.display = "block";
-    mainContent[0].style.display = "block";
+    if (stringRegex.test(searchString) && stringRegex.test(excluded)) { // Testing that both string input fields don't contain special characters
 
-    // If calories isn't entered, set the value high so there are no limits
-    if (cals === '') {
-        cals = 5000;
+        // Clear div elements to prevent concatenation on subsequent form fills
+        var elRecipeLabel = document.getElementById("recipe-label");
+        var elRecipeImage = document.getElementById("recipe-image");
+        var elRecipeIngredients = document.getElementById("recipe-ingredients");
+        var elRecipeLink = document.getElementById("recipe-link");
+        var elRecipelinksContent = document.getElementById("recipe-links-content");
+        elRecipeLabel.innerHTML = "";
+        elRecipeImage.innerHTML = "";
+        elRecipeIngredients.innerHTML = "";
+        elRecipeLink.innerHTML = "";
+        elRecipelinksContent.innerHTML = "";
+
+        // Remove search form to tidy interface
+        var formContainer = document.getElementsByClassName("form-container");
+        formContainer[0].style.display = "none";
+
+        // Creating variables for the hidden containers
+        var mainContent = document.getElementsByClassName("main-content");
+        var recipeLinkContainer = document.getElementsByClassName("recipe-link-container");
+        var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
+
+        // Reveal the hidden recipe details container
+        recipeLinkContainer[0].style.display = "block";
+        ingredientsListContainer[0].style.display = "block";
+        mainContent[0].style.display = "block";
+
+        // If calories isn't entered, set the value high so there are no limits
+        if (cals === '') {
+            cals = 5000;
+        }
+
+        if (cals > 49) {
+
+            getRecipeData(searchString, cals, excluded, health, function (data) {
+                if (data.hits.length > 0) {
+                    console.dir(data); // Adding telemetry during dev
+                    var recipeCount = data.hits.length;
+                    var recipeNumber = Math.floor(Math.random() * recipeCount);  // returns a random integer from 0 to number of recipes (up to 100) to be used to randomise the first recipe hit.
+                    var recipe = data.hits[recipeNumber].recipe; // return the selected recipe Object
+                    var recipeIngredients = getRecipeIngredients(data.hits[recipeNumber].recipe.ingredientLines);
+                    var moreRecipeLinks = getMoreRecipeLinks(data.hits);
+
+                    elRecipeLabel.innerHTML = `<h2>${recipe.label}</h2>`;
+                    elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
+                    elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
+                    elRecipeLink.innerHTML = `<button class="btn btn-primary"><a href="${recipe.url}" target="_blank">I want to cook this!</a></button>`;
+
+                    elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
+
+                    // Add functionality to the collapsible other recipe links section
+                    var coll = document.getElementById("recipe-links-collapsible");
+                    coll.style.display = "inline";
+                    coll.addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        }
+                    });
+
+                }
+                else {
+                    elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;
+                    elRecipeImage.innerHTML = `<img src="assets/images/corgi-food.jpg"/>`;
+                    elRecipeLink.innerHTML = `<p>Looks like our cute Corgi will go hungry. Maybe you need to search for something else?`;
+                }
+            });
+        }
+        else {
+            elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;
+            elRecipeImage.innerHTML = `<img src="assets/images/wet-corgi.jpg"/>`;
+            elRecipeLink.innerHTML = `<p>Our Corgi is too thin. We need to add more calories!`;
+        }
     }
+    else { // Special character was inputted, failed RegEx and so displaying error image and message
+        var elRecipeLabel = document.getElementById("recipe-label");
+        var elRecipeImage = document.getElementById("recipe-image");
+        var elRecipeLink = document.getElementById("recipe-link");
 
-    if (cals > 49) {
+        // Remove search form to tidy interface
+        var formContainer = document.getElementsByClassName("form-container");
+        formContainer[0].style.display = "none";
 
-        getRecipeData(searchString, cals, excluded, health, function (data) {
-            if (data.hits.length > 0) {
-                console.dir(data); // Adding telemetry during dev
-                var recipeCount = data.hits.length;
-                var recipeNumber = Math.floor(Math.random() * recipeCount);  // returns a random integer from 0 to number of recipes (up to 100) to be used to randomise the first recipe hit.
-                var recipe = data.hits[recipeNumber].recipe; // return the selected recipe Object
-                var recipeIngredients = getRecipeIngredients(data.hits[recipeNumber].recipe.ingredientLines);
-                var moreRecipeLinks = getMoreRecipeLinks(data.hits);
+        // Creating variables for the hidden containers
+        var mainContent = document.getElementsByClassName("main-content");
+        var recipeLinkContainer = document.getElementsByClassName("recipe-link-container");
+        var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
 
-                elRecipeLabel.innerHTML = `<h2>${recipe.label}</h2>`;
-                elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
-                elRecipeIngredients.innerHTML = `<ul><h2 class="header-text">Ingredients</h2>${recipeIngredients}</ul>`.replace(/,/g, `<br>`);
-                elRecipeLink.innerHTML = `<button class="btn btn-primary"><a href="${recipe.url}" target="_blank">Take me to the magic!</a></button>`;
+        // Reveal the hidden recipe details container
+        recipeLinkContainer[0].style.display = "block";
+        ingredientsListContainer[0].style.display = "block";
+        mainContent[0].style.display = "block";
 
-                elRecipelinksContent.innerHTML = `<p><em>Try one of these...</em></p><ul>${moreRecipeLinks}</ul>`.replace(/,/g, `<br>`);
-                
-                // Add functionality to the collapsible other recipe links section
-                var coll = document.getElementById("recipe-links-collapsible");
-                coll.style.display = "inline";
-                coll.addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                      } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                      }
-                });
-                
-            }
-            else {
-                elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;
-                elRecipeImage.innerHTML = `<img src="assets/images/corgi-food.jpg"/>`;
-                elRecipeLink.innerHTML = `<p>Looks like our cute Corgi will go hungry. Maybe you need to search for something else?`;
-            }
-        });
-    }
-    else {
         elRecipeLabel.innerHTML = `<h2>Uh oh......<h2>`;
-        elRecipeImage.innerHTML = `<img src="assets/images/wet-corgi.jpg"/>`;
-        elRecipeLink.innerHTML = `<p>Our Corgi is too thin. We need to add more calories!`;
+        elRecipeImage.innerHTML = `<img src="assets/images/corgi-food.jpg"/>`;
+        elRecipeLink.innerHTML = `<p>Looks like our cute Corgi will go hungry. Maybe you need to search for something else?`;
     }
 }
