@@ -4,7 +4,7 @@
 
 This site provides a single page web application to search an extensive database of recipes. The database is provided by the Edamam API (specific information on this API later).
 
-I personally created the name "Mealissimo" as a play on the Italian "Bellissimo", which of course means beautiful! This is often used to describe lovely food and so it should evoke an appropriate expecation on the purpose of this application. The branding and colour scheme was generated using https://brandbuilder.ai/
+I personally created the name "Mealissimo" as a play on the Italian "Bellissimo", which of course means beautiful and often associated with fantastic food! The branding and colour scheme was generated using https://brandbuilder.ai/
 
 The benefit of this application is providing a single pane of glass for all your recipe needs, which queries numerous recipe sites. The advantage is time saved because one does not need to visit countless, separate web resources to find the bellissimo meal one desires!
 
