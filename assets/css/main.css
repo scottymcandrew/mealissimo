@@ -65,7 +65,7 @@
     color: #fff;
 }
 
-.logo-container h2 {
+.logo-container h3 {
     display: none;
 }
 
@@ -266,7 +266,7 @@ li {
         justify-content: center;
     }
 
-    .logo-container h2 {
+    .logo-container h3 {
         display: block;
     }
 

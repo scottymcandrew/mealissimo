@@ -40,7 +40,6 @@ function getRecipeData(searchString, cals, excluded, health, cb) {
 function getRecipeIngredients(arr) {
     var recipeIngredients = [];
 
-    //Object.values(obj).forEach(function(item) {
     arr.forEach(function (item) {
         recipeIngredients.push(`<li>${item}</li>`);
     });
@@ -61,8 +60,6 @@ function getMoreRecipeLinks(arr) {
 
 function writeToDocument(searchString, cals, excluded, health) {
     // Clear div elements to prevent concatenation on subsequent form fills
-    // var elData = document.getElementById("data");
-    // var elRecipeHeader = document.getElementById("recipe-header");
     console.log(health);
     var elRecipeLabel = document.getElementById("recipe-label");
     var elRecipeImage = document.getElementById("recipe-image");
@@ -75,6 +72,17 @@ function writeToDocument(searchString, cals, excluded, health) {
     elRecipeLink.innerHTML = "";
     elRecipelinksContent.innerHTML = "";
 
+    // Remove search form to tidy interface
+    var formContainer = document.getElementsByClassName("form-container");
+    formContainer[0].style.display = "none";
+
+    // Creating variables for the hidden containers
+    var recipeLinkContainer = document.getElementsByClassName("recipe-link-container");
+    var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
+    // Reveal the hidden recipe details container
+    recipeLinkContainer[0].style.display = "block";
+    ingredientsListContainer[0].style.display = "block";
+
     if (cals > 49) {
 
         getRecipeData(searchString, cals, excluded, health, function (data) {
@@ -85,12 +93,6 @@ function writeToDocument(searchString, cals, excluded, health) {
                 var recipe = data.hits[recipeNumber].recipe; // return the selected recipe Object
                 var recipeIngredients = getRecipeIngredients(data.hits[recipeNumber].recipe.ingredientLines);
                 var moreRecipeLinks = getMoreRecipeLinks(data.hits);
-
-                // Reveal the hidden recipe details container
-                var recipeLinkContainer = document.getElementsByClassName("recipe-link");
-                var ingredientsListContainer = document.getElementsByClassName("ingredients-list");
-                recipeLinkContainer[0].style.display = "block";
-                ingredientsListContainer[0].style.display = "block";
 
                 elRecipeLabel.innerHTML = `<h2>${recipe.label}</h2>`;
                 elRecipeImage.innerHTML = `<img src="${recipe.image}"/>`;
@@ -111,10 +113,6 @@ function writeToDocument(searchString, cals, excluded, health) {
                         content.style.maxHeight = content.scrollHeight + "px";
                       }
                 });
-
-                // Remove search form to tidy interface
-                var formContainer = document.getElementsByClassName("form-container");
-                formContainer[0].style.display = "none";
                 
             }
             else {
