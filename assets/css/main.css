@@ -287,6 +287,23 @@ li a:hover {
         display: block;
     }
 
+    .logo-container img {
+        height: 75%;
+        width: 75%;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .logo-container > h3 {
+        font-size: 1rem !important;
+    }
+
+    .logo-container img {
+        height: 50%;
+        width: 50%;
+    }
+
 }
 
 @media (min-width: 768px) {

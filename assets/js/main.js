@@ -41,7 +41,7 @@ function getRecipeIngredients(arr) {
     var recipeIngredients = [];
 
     arr.forEach(function (item) {
-        recipeIngredients.push(`<li>${item}</li>`);
+        recipeIngredients.push(`<li><i class="fas fa-drumstick-bite"></i>  ${item}</li>`);
     });
 
     return recipeIngredients;
