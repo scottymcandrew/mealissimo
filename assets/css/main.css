@@ -1,13 +1,5 @@
 /* ---------------- Font styles ---------------- */
 
-.font-libre-baskerville {
-    font-family: 'Libre Baskerville', serif;
-}
-
-.font-source-sans-pro {
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
 .font-nixie-one {
     font-family: 'Nixie One', cursive;
 }
@@ -135,6 +127,10 @@ a {
 .main-content {
     color: rgba(44, 43, 7, 1);
     display: none;
+}
+
+#recipe-image img {
+    width: 100%;
 }
 
 .side-content {
